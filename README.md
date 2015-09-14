@@ -8,8 +8,8 @@ http://hey.liteneo.com/admin
 username: hexo  
 passowrd: hey  
 
-![desktop](./screenshot/1.png)
-![mobile](./screenshot/2.png)
+![desktop](./screenshot/1.jpg)
+![mobile](./screenshot/2.jpg)
 
 ## About
 * client framework: [angular](https://github.com/angular/angular.js)
