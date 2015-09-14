@@ -1,6 +1,6 @@
 # hexo-hey
-an admin plugin for hexo, support hexo v3.x
-built with gulp + babel + webpack
+an admin plugin for hexo, support hexo v3.x  
+built with gulp + babel + webpack  
 using es6 + angular + materail + jwt
 
 ## Demo
