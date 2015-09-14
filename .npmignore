@@ -1,0 +1,15 @@
+.sass-cache/
+.tmp/
+bower_components/
+e2e/
+gulp/
+node_modules/
+src/
+.bowerrc
+.editorconfig
+.jshintrc
+.yo-rc.json
+bower.json
+gulpfile.js
+karma.conf.js
+protractor.conf.js

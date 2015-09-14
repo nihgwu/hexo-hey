@@ -1,0 +1,77 @@
+<md-content layout="column" flex id="post-vm-content">
+  <md-toolbar class="post-header md-accent">
+    <div class="md-toolbar-tools" flex layout="row">
+      <md-input-container md-no-float flex>
+        <input ng-model="vm.post.title" placeholder="Untitled">
+      </md-input-container>
+      <md-button hide-gt-md class="md-icon-button" ng-click="vm.preview=!vm.preview" aria-label="Post preview">
+        <md-icon ng-show="!vm.preview" md-svg-icon="eye"></md-icon>
+        <md-icon ng-show="vm.preview" md-svg-icon="eye-disabled"></md-icon>
+      </md-button>
+      <md-button ng-click="vm.showSettings()" class="md-icon-button" aria-label="logout">
+        <md-icon md-svg-icon="more"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content layout="row" flex>
+    <md-content class="editor-container" layout="column" flex ng-hide="!$root.$mdMedia('gt-md') && vm.preview">
+      <div flex ng-model="vm.post.content" ui-ace="{mode:'markdown', useWrapMode: true, showGutter: false, onLoad: post.aceLoaded, onChange: vm.aceChanged}">
+      </div>
+    </md-content>
+    <md-content flex ng-hide="!$root.$mdMedia('gt-md') && !vm.preview">
+      <div marked="vm.post.content" class="markdown-body"></div>
+    </md-content>
+  </md-content>
+  <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="settingsView">
+    <md-toolbar class="md-accent">
+      <div class="md-toolbar-tools">
+        <h2>Post settings</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.closeSettings()" aria-label="Close settings">
+          <md-icon md-svg-icon="close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content layout-padding layout="column">
+      <form name="editForm">
+        <md-input-container>
+          <label>Slug</label>
+          <input name="slug" type="text" ng-model="vm.post.slug">
+        </md-input-container>
+        <md-input-container>
+          <label>Date</label>
+          <input name="date" type="text" pattern="^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])(\s([0-1][0-9]|[2][0-3])(:)([0-5][0-9])(:)([0-5][0-9]))?$" ng-model="vm.post.date">
+          <div ng-messages="editForm.date.$error" ng-if="editForm.date.$dirty">
+            <div ng-message="pattern">Should be in yyyy-MM-dd( HH:mm:ss) format</div>
+          </div>
+        </md-input-container>
+        <md-input-container md-float-bottom ng-class="{'has-value': vm.post.categories.length}">
+          <label>Category</label>
+          <md-chips ng-model="vm.post.categories" md-autocomplete-snap>
+            <md-autocomplete md-search-text="vm.searchCategory" md-items="category in vm.categories | filter: vm.searchCategory" md-item-text="category">
+              <span md-highlight-text="vm.searchCategory">{{category}}</span>
+            </md-autocomplete>
+          </md-chips>
+        </md-input-container>
+        <md-input-container md-float-bottom ng-class="{'has-value': vm.post.tags.length>0}">
+          <label>Tag</label>
+          <md-chips ng-model="vm.post.tags" md-autocomplete-snap>
+            <md-autocomplete md-search-text="vm.searchTag" md-items="tag in vm.tags | filter: vm.searchTag" md-item-text="tag">
+              <span md-highlight-text="vm.searchTag">{{tag}}</span>
+            </md-autocomplete>
+          </md-chips>
+        </md-input-container>
+        <div ng-if="vm.slug" flex layout="row" layout-align="space-between center" ng-show="!list.curField.isSys">
+          <md-button ng-disabled="!editForm.$valid" ng-click="vm.update()" class="md-primary md-raised">update</md-button>
+          <md-button ng-click="vm.update(!vm.post.published)" class="md-primary">{{vm.post.published?'unpublish':'publish'}}</md-button>
+        </div>
+        <md-button ng-if="vm.slug" ng-click="vm.remove($event)" class="md-warn">delete</md-button>
+        <div ng-if="!vm.slug" flex layout="row" layout-align="space-between center" ng-show="!list.curField.isSys">
+          <md-button ng-click="vm.update(true)" class="md-primary md-raised">publish</md-button>
+          <md-button ng-click="vm.update(false)" class="md-primary">save draft</md-button>
+        </div>
+        <md-button ng-if="!vm.slug" ng-click="vm.cancel()" class="md-warn">cancel</md-button>
+      </form>
+    </md-content>
+  </md-sidenav>
+</md-content>

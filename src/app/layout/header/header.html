@@ -1,0 +1,42 @@
+<md-toolbar id="layout-header">
+  <div class="md-toolbar-tools" flex layout="row" hide-sm>
+    <md-button class="md-icon-button" aria-label="hey">
+      <md-icon md-svg-icon="logo"></md-icon>
+    </md-button>
+    <h2>Hey Hexo</h2>
+    <md-button ui-sref="post.list" aria-label="Posts">
+      <md-icon md-svg-icon="pound"></md-icon>
+      <span>Posts</span>
+    </md-button>
+    <md-button ui-sref="settings" aria-label="Settings">
+      <md-icon md-svg-icon="gear-a"></md-icon>
+      <span>Settings</span>
+    </md-button>
+    <md-button ui-sref="post.create" aria-label="New post">
+      <md-icon md-svg-icon="plus"></md-icon>
+      <span>New post</span>
+    </md-button>
+    <div flex></div>
+    <md-button class="md-icon-button" ng-click="header.logout()" aria-label="logout">
+      <md-icon md-svg-icon="log-out"></md-icon>
+    </md-button>
+  </div>
+  <div class="md-toolbar-tools" flex layout="row" hide show-sm>
+    <md-button class="md-icon-button" ng-click="header.openSidebar()" aria-label="hey">
+      <md-icon md-svg-icon="logo"></md-icon>
+    </md-button>
+    <div flex></div>
+    <md-button class="md-icon-button" ui-sref="post.list" aria-label="Posts">
+      <md-icon md-svg-icon="pound"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ui-sref="settings" aria-label="Settings">
+      <md-icon md-svg-icon="gear-a"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ui-sref="post.create" aria-label="New post">
+      <md-icon md-svg-icon="plus"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ng-click="header.logout()" aria-label="logout">
+      <md-icon md-svg-icon="log-out"></md-icon>
+    </md-button>
+  </div>
+</md-toolbar>

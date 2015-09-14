@@ -1,0 +1,21 @@
+#post-list-content {
+  md-sidenav {
+    md-list-item {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      &:last-child {
+        border-bottom: none;
+      }
+      .md-list-item-text h3 {
+        line-height: 1em;
+      }
+      &.active {
+        .md-button {
+          background-color: #eee;
+          border-left: 6px solid rgb(33, 150, 243);
+          padding-left: 10px;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

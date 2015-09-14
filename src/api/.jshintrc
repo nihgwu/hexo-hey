@@ -1,0 +1,8 @@
+{
+  "extends": "../../.jshintrc",
+  "camelcase": false,
+  "node": true,
+  "globals": {
+    "hexo": false
+  }
+}
