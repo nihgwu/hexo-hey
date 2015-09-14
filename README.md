@@ -8,6 +8,9 @@ http://hey.liteneo.com/admin
 username: hexo  
 passowrd: hey  
 
+![desktop](./screenshot/1.png)
+![mobile](./screenshot/2.png)
+
 ## About
 * client framework: [angular](https://github.com/angular/angular.js)
 * dashboard ui: [material](https://github.com/angular/material)
