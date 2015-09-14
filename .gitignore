@@ -3,5 +3,3 @@ bower_components/
 .sass-cache/
 .tmp/
 www/
-api.js
-index.js
