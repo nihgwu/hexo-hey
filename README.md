@@ -1,19 +1,20 @@
 # hexo-hey
 an admin plugin for hexo, support hexo v3.x
+built with gulp + babel + webpack
 using es6 + angular + materail + jwt
 
 ## Demo
-http://hey.liteno.com/admin  
+http://hey.liteneo.com/admin  
 username: hexo  
 passowrd: hey  
 
 ## About
-* client framework: angular
-* dashboard ui: material
-* authentication: jwt
-* markdown parser: marked
-* markdown style: github-markdown-css
-* markdown editor: ace
+* client framework: [angular](https://github.com/angular/angular.js)
+* dashboard ui: [material](https://github.com/angular/material)
+* authentication: [jwt](https://github.com/auth0/node-jsonwebtoken)
+* markdown parser: [marked](https://github.com/chjj/marked)
+* markdown style: [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
+* markdown editor: [ace](https://github.com/ajaxorg/ace-builds)
 
 ## How to use
 ### 1. install hexo-hey
