@@ -41,7 +41,7 @@ angular
 })
 
 .constant('Config', {
-  APIURL: 'http://localhost:4000/api'
+  APIURL: '/api'
 })
 
 .config(($mdThemingProvider) => {
