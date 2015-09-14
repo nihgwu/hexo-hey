@@ -78,5 +78,9 @@ angular
 
   $httpProvider.interceptors.push('AuthInterceptor');
 
-  $urlRouterProvider.otherwise('/posts');
+  //$urlRouterProvider.otherwise('/posts');
+  $urlRouterProvider.otherwise($injector => {
+    var $state = $injector.get('$state');
+    $state.go('post.list');
+  });
 });
