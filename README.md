@@ -4,7 +4,7 @@ built with gulp + babel + webpack
 using es6 + angular + materail + jwt
 
 ## Demo
-http://hey.liteneo.com/admin  
+http://nihgwu.github.io/hexo-hey/  
 username: hexo  
 passowrd: hey  
 
