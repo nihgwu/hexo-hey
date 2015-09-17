@@ -3,6 +3,14 @@ html {
   //font-family: 'Roboto Slab', serif;
 }
 
+body {
+  overflow-y: hidden;
+}
+
+md-content {
+  overflow-x: hidden;
+}
+
 .browsehappy {
   margin: 0;
   background: #eee;
