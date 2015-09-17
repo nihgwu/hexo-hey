@@ -4,10 +4,11 @@ built with gulp + babel + webpack
 using es6 + angular + materail + jwt
 
 ## Demo
-http://nihgwu.github.io/hexo-hey/  
+[http://nihgwu.github.io/hexo-hey/](http://nihgwu.github.io/hexo-hey/)  
 username: hexo  
 passowrd: hey  
 
+## Screenshots
 ![desktop](./screenshot/1.jpg)
 ![mobile](./screenshot/2.jpg)
 
@@ -19,10 +20,10 @@ passowrd: hey
 * markdown style: [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
 * markdown editor: [ace](https://github.com/ajaxorg/ace-builds)
 
-## How to use
+## Usage
 ### 1. install hexo-hey
 ```
-npm install nihgwu/hexo-hey --save
+npm install hexo-hey --save
 ```
 
 ### 2. add a admin config section to `_config.yml`:
@@ -41,4 +42,4 @@ cors is optional if you want serve your client in another place(CDN for example)
 ```
 hexo serve
 ```
-then visit http://localhost:4000/admin, and login with the account set in previous step
+then visit `http://localhost:4000/admin` , and login with the account set in previous step
