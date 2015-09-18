@@ -22,7 +22,6 @@
     "body-parser": "^1.13.3",
     "connect-route": "^0.1.5",
     "cors": "^2.7.1",
-    "express": "^4.13.3",
     "express-jwt": "^3.0.1",
     "jsonwebtoken": "^5.0.5",
     "serve-static": "^1.10.0"
