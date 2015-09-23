@@ -5,8 +5,8 @@
         <md-list-item ng-class="{'active': post.slug == list.$state.params.slug}" ng-click="list.detail(post)" class="md-2-line" ng-repeat="post in list.posts">
           <div class="md-list-item-text">
             <h3>{{post.title}}</h3>
-            <p ng-show="post.published">Published <span am-time-ago="post.date"></span></p>
-            <p ng-show="!post.published">Draft</p>
+            <p ng-show="post.published">{{'PUBLISHED' | translate}} <span am-time-ago="post.date"></span></p>
+            <p ng-show="!post.published">{{'DRAFT' | translate}} </p>
           </div>
         </md-list-item>
       </md-list>

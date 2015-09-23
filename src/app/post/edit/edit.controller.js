@@ -2,9 +2,9 @@
 
 class PostEditCtrl {
   /** @ngInject */
-  constructor($mdSidenav, $mdDialog, $state, $stateParams, $filter, PostService) {
+  constructor($mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, PostService) {
     angular.extend(this, {
-      $mdSidenav, $mdDialog, $state, $stateParams, $filter, PostService
+      $mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, PostService
     });
 
     this.slug = $stateParams.slug;
@@ -51,17 +51,19 @@ class PostEditCtrl {
   }
 
   remove(ev) {
-    var confirm = this.$mdDialog.confirm()
-      .title('Delete post')
-      .content('Do you really want to delete this post?')
-      .ariaLabel('Delete post')
-      .ok('Delete')
-      .cancel('Cancel')
-      .targetEvent(ev);
+    this.$translate(['DELETEPOST', 'CONTENTDELETEPOST', 'DELETE', 'CANCEL']).then(translations => {
+      var confirm = this.$mdDialog.confirm()
+        .title(translations.DELETEPOST)
+        .content(translations.CONTENTDELETEPOST)
+        .ariaLabel('Delete post')
+        .ok(translations.DELETE)
+        .cancel(translations.CANCEL)
+        .targetEvent(ev);
 
-    this.$mdDialog.show(confirm).then(() => {
-      this.PostService.deletePost(this.post.id).then(() => {
-        this.$state.go('post.list');
+      this.$mdDialog.show(confirm).then(() => {
+        this.PostService.deletePost(this.post.id).then(() => {
+          this.$state.go('post.list');
+        });
       });
     });
   }

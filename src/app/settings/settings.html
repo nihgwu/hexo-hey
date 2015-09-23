@@ -1,13 +1,13 @@
 <md-content layout="column" layout-gt-sm="row" flex id="settings-content">
   <md-content layout="column" flex>
-    <md-subheader class="md-primary">Theme config</md-subheader>
+    <md-subheader class="md-primary">{{'THEMECONFIG' | translate}}</md-subheader>
     <md-content class="editor-container" layout="column" flex>
       <div flex ng-model="vm.config.themeConfig" ui-ace="{mode:'yaml', useWrapMode: true, showGutter: false, onLoad: vm.themeConfigLoaded, onChange: vm.aceChanged}">
       </div>
     </md-content>
   </md-content>
   <md-content layout="column" flex hide-sm>
-    <md-subheader class="md-primary">Hexo config</md-subheader>
+    <md-subheader class="md-primary">{{'HEXOCONFIG' | translate}}</md-subheader>
     <md-content class="editor-container" layout="column" flex>
       <div ng-disabled="true" flex ng-model="vm.config.hexoConfig" ui-ace="{mode:'yaml', useWrapMode: true, showGutter: false, onLoad: vm.hexoConfigLoaded, onChange: vm.aceChanged}">
       </div>

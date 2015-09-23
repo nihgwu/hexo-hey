@@ -4,20 +4,22 @@
     <md-card-content>
       <form class="card" name="loginForm" layout="column" ng-submit="vm.login(loginForm)">
         <md-input-container md-is-error="loginForm.name.$error.required && loginForm.name.$dirty">
-          <label>Username</label>
+          <label translate>USERNAME</label>
           <input name="name" ng-model="vm.user.name" required/>
           <div ng-messages="loginForm.name.$error" ng-if="loginForm.name.$dirty">
-            <div ng-message="required">Please input the username</div>
+            <div ng-message="required">{{'INPUTUSERNAME' | translate}}</div>
           </div>
         </md-input-container>
         <md-input-container md-is-error="loginForm.password.$error.required && loginForm.password.$dirty">
-          <label>Password</label>
+          <label translate>PASSWORD</label>
           <input name="password" type="password" ng-model="vm.user.password" required/>
           <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
-            <div ng-message="required">Please input the password</div>
+            <div ng-message="required"></div>
           </div>
         </md-input-container>
-        <md-button class="md-primary md-raised" ng-disabled="!loginForm.$valid" type="submit">Login</md-button>
+        <md-button class="md-primary md-raised" ng-disabled="!loginForm.$valid" type="submit">
+          {{'LOGIN' | translate}}
+        </md-button>
       </form>
     </md-card-content>
   </md-card>
