@@ -2,9 +2,9 @@
 
 class SettingsCtrl {
   /** @ngInject */
-  constructor($state, $mdToast, $translate, SettingsService) {
+  constructor($state, $mdToast, $translate, Toast, SettingsService) {
     angular.extend(this, {
-      $state, $mdToast, $translate, SettingsService
+      $state, $mdToast, $translate, Toast, SettingsService
     });
 
     SettingsService.getConfig().then(data => {
@@ -14,12 +14,8 @@ class SettingsCtrl {
 
   updateConfig() {
     this.SettingsService.updateConfig(this.config).then(() => {
-      this.$translate('CONTENTTHEMECONFIGUPDATE').then(CONTENTTHEMECONFIGUPDATE => {
-        this.$mdToast.show(
-          this.$mdToast.simple()
-          .content(CONTENTTHEMECONFIGUPDATE)
-          .hideDelay(3000)
-        );
+      this.$translate('SUCCESSTHEMECONFIGUPDATE').then(SUCCESSTHEMECONFIGUPDATE => {
+        this.Toast.show(SUCCESSTHEMECONFIGUPDATE);
       });
     });
   }

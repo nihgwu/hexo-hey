@@ -2,9 +2,9 @@
 
 class LoginCtrl {
   /** @ngInject */
-  constructor($state, $mdToast, AuthService) {
+  constructor($state, Toast, AuthService) {
     angular.extend(this, {
-      $state, $mdToast, AuthService
+      $state, Toast, AuthService
     });
     this.user = {};
   }
@@ -12,13 +12,7 @@ class LoginCtrl {
   login() {
     this.AuthService.login(this.user).then(() => {
       this.$state.go('post.list');
-    }).catch(err => {
-      this.$mdToast.show(
-        this.$mdToast.simple()
-        .content(err)
-        .hideDelay(3000)
-      );
-    });
+    }).catch(err => this.Toast.show(err));
   }
 }
 

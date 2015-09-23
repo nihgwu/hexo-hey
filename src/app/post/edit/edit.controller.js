@@ -2,9 +2,9 @@
 
 class PostEditCtrl {
   /** @ngInject */
-  constructor($mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, PostService) {
+  constructor($mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, Toast, PostService) {
     angular.extend(this, {
-      $mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, PostService
+      $mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, Toast, PostService
     });
 
     this.slug = $stateParams.slug;
@@ -34,17 +34,21 @@ class PostEditCtrl {
   }
 
   update(publish) {
+    let post = Object.assign({}, this.post);
     if (angular.isUndefined(publish)) {
-      this.post.layout = this.post.published ? 'post' : 'draft';
+      post.layout = this.post.published ? 'post' : 'draft';
     } else {
-      this.post.layout = publish ? 'post' : 'draft';
+      post.layout = publish ? 'post' : 'draft';
     }
-    this.post.date = new Date(this.post.date);
-    this.PostService.updatePost(this.post).then(data => {
+    post.date = new Date(this.post.date);
+    this.PostService.updatePost(post).then(data => {
+      this.$translate('SUCCESSPOSTUPDATE').then(SUCCESSPOSTUPDATE => {
+        this.Toast.show(SUCCESSPOSTUPDATE);
+      });
       this.$state.go('post.detail', {
         slug: data.slug
       });
-    });
+    }).catch(err => this.Toast.show(err.data));
   }
 
   cancel() {
@@ -52,7 +56,7 @@ class PostEditCtrl {
   }
 
   remove(ev) {
-    this.$translate(['DELETEPOST', 'CONTENTDELETEPOST', 'DELETE', 'CANCEL']).then(translations => {
+    this.$translate(['DELETEPOST', 'CONTENTDELETEPOST', 'DELETE', 'CANCEL', 'SUCCESSPOSTDELETE']).then(translations => {
       var confirm = this.$mdDialog.confirm()
         .title(translations.DELETEPOST)
         .content(translations.CONTENTDELETEPOST)
@@ -63,8 +67,9 @@ class PostEditCtrl {
 
       this.$mdDialog.show(confirm).then(() => {
         this.PostService.deletePost(this.post.id).then(() => {
+          this.Toast.show(translations.SUCCESSPOSTDELETE);
           this.$state.go('post.list');
-        });
+        }).catch(err => this.Toast.show(err.data));
       });
     });
   }

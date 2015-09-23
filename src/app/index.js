@@ -1,6 +1,7 @@
 'use strict';
 
 import AuthModule from './components/auth/auth';
+import ToastModule from './components/toast/toast';
 import LoginModule from './login/login';
 import SettingsModule from './settings/settings';
 import PostModule from './post/post';
@@ -19,6 +20,7 @@ angular
     'pascalprecht.translate',
 
     AuthModule.name,
+    ToastModule.name,
     LoginModule.name,
     SettingsModule.name,
     PostModule.name
@@ -105,7 +107,10 @@ angular
     'INPUTDATE': 'Should be in yyyy-MM-dd( HH:mm:ss) format',
 
     'CONTENTDELETEPOST': 'Do you really want to delete this post?',
-    'CONTENTTHEMECONFIGUPDATE': 'Theme config updated'
+
+    'SUCCESSTHEMECONFIGUPDATE': 'Theme config updated',
+    'SUCCESSPOSTDELETE': 'Post deleted',
+    'SUCCESSPOSTUPDATE': 'Post updated',
   });
 
   $translateProvider.translations('zh', {
@@ -139,7 +144,10 @@ angular
     'INPUTDATE': '时间格式 yyyy-MM-dd( HH:mm:ss)',
 
     'CONTENTDELETEPOST': '确定删除这篇文章？',
-    'CONTENTTHEMECONFIGUPDATE': '主题设置更新成功'
+
+    'SUCCESSTHEMECONFIGUPDATE': '主题设置更新成功',
+    'SUCCESSPOSTDELETE': '文章删除成功',
+    'SUCCESSPOSTUPDATE': '文章更新成功',
   });
 
   $translateProvider.useSanitizeValueStrategy(null);
