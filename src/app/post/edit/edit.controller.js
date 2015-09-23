@@ -14,7 +14,7 @@ class PostEditCtrl {
     if (!this.slug) {
       this.post = {
         title: 'Untitled',
-        slug: 'Untitled',
+        slug: 'untitled',
         date: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
         tags: [],
         categories: []
@@ -39,6 +39,7 @@ class PostEditCtrl {
     } else {
       this.post.layout = publish ? 'post' : 'draft';
     }
+    this.post.date = new Date(this.post.date);
     this.PostService.updatePost(this.post).then(data => {
       this.$state.go('post.detail', {
         slug: data.slug
