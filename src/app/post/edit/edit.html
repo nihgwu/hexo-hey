@@ -36,7 +36,11 @@
       <form name="editForm">
         <md-input-container>
           <label translate>SLUG</label>
-          <input name="slug" type="text" ng-model="vm.post.slug">
+          <input name="slug" type="text" ng-model="vm.post.slug" required ng-change="vm.checkUnique(editForm)">
+          <div ng-messages="editForm.slug.$error">
+            <div ng-message="required">{{'INPUTSLUG' | translate}}</div>
+            <div ng-message="unique">{{'INPUTSLUGEXIST' | translate}}</div>
+          </div>
         </md-input-container>
         <md-input-container>
           <label translate>DATE</label>
@@ -61,14 +65,14 @@
             </md-autocomplete>
           </md-chips>
         </md-input-container>
-        <div ng-if="vm.slug" flex layout="row" layout-align="space-between center" ng-show="!list.curField.isSys">
+        <div ng-if="vm.slug" flex layout="row" layout-align="space-between center">
           <md-button ng-disabled="!editForm.$valid" ng-click="vm.update()" class="md-primary md-raised">{{'UPDATE' | translate}}</md-button>
-          <md-button ng-click="vm.update(!vm.post.published)" class="md-primary">{{vm.post.published?'UNPUBLISH':'PUBLISH' | translate}}</md-button>
+          <md-button ng-disabled="!editForm.$valid" ng-click="vm.update(!vm.post.published)" class="md-primary">{{vm.post.published?'UNPUBLISH':'PUBLISH' | translate}}</md-button>
         </div>
         <md-button ng-if="vm.slug" ng-click="vm.remove($event)" class="md-warn">{{'DELETE' | translate}}</md-button>
-        <div ng-if="!vm.slug" flex layout="row" layout-align="space-between center" ng-show="!list.curField.isSys">
-          <md-button ng-click="vm.update(true)" class="md-primary md-raised">{{'PUBLISH' | translate}}</md-button>
-          <md-button ng-click="vm.update(false)" class="md-primary">{{'SAVEDRAFT' | translate}}</md-button>
+        <div ng-if="!vm.slug" flex layout="row" layout-align="space-between center">
+          <md-button ng-disabled="!editForm.$valid" ng-click="vm.update(true)" class="md-primary md-raised">{{'PUBLISH' | translate}}</md-button>
+          <md-button ng-disabled="!editForm.$valid" ng-click="vm.update(false)" class="md-primary">{{'SAVEDRAFT' | translate}}</md-button>
         </div>
         <md-button ng-if="!vm.slug" ng-click="vm.cancel()" class="md-warn">{{'CANCEL' | translate}}</md-button>
       </form>

@@ -104,6 +104,8 @@ angular
 
     'INPUTUSERNAME': 'Please input the username',
     'INPUTPASSWORD': 'Please input the password',
+    'INPUTSLUG': 'Please input the slug',
+    'INPUTSLUGEXIST': 'Slug already exists',
     'INPUTDATE': 'Should be in yyyy-MM-dd( HH:mm:ss) format',
 
     'CONTENTDELETEPOST': 'Do you really want to delete this post?',
@@ -141,6 +143,8 @@ angular
 
     'INPUTUSERNAME': '请输入用户名',
     'INPUTPASSWORD': '请输入密码',
+    'INPUTSLUG': '请输入别名',
+    'INPUTSLUGEXIST': '别名已存在',
     'INPUTDATE': '时间格式 yyyy-MM-dd( HH:mm:ss)',
 
     'CONTENTDELETEPOST': '确定删除这篇文章？',

@@ -14,7 +14,7 @@ class PostEditCtrl {
     if (!this.slug) {
       this.post = {
         title: 'Untitled',
-        slug: 'untitled',
+        slug: 'untitled-' + new Date().getTime(),
         date: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
         tags: [],
         categories: []
@@ -31,6 +31,20 @@ class PostEditCtrl {
     }
     PostService.getCategories().then(data => this.categories = data);
     PostService.getTags().then(data => this.tags = data);
+  }
+
+  checkUnique(form) {
+    if (this.post.slug === this.slug) {
+      return form.slug.$setValidity('unique', true);
+    }
+    this.PostService.getPosts().then(posts => {
+      let post = posts.find(post => post.slug === this.post.slug);
+      let unique = angular.isUndefined(post);
+      if (this.post.slug === this.slug) {
+        unique = true;
+      }
+      form.slug.$setValidity('unique', unique);
+    });
   }
 
   update(publish) {
