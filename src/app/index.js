@@ -26,8 +26,12 @@ angular
     PostModule.name
   ])
 
-.run(($rootScope, $location, $timeout, $mdMedia, AuthService) => {
+.run(($rootScope, $location, $timeout, $window, $mdMedia, $translate, AuthService, amMoment) => {
   $rootScope.$mdMedia = $mdMedia;
+
+  let language = $window.localStorage.language || $window.navigator.language;
+  $translate.use(language);
+  amMoment.changeLocale(language);
 
   // Redirect to login if route requires auth and you're not logged in
   $rootScope.$on('$stateChangeStart', function(event, next) {
@@ -168,7 +172,8 @@ angular
 
   $translateProvider.useSanitizeValueStrategy(null);
   $translateProvider.fallbackLanguage('en');
-  $translateProvider.determinePreferredLanguage();
+  //$translateProvider.uniformLanguageTag('bcp47');
+  //$translateProvider.determinePreferredLanguage();
 })
 
 .config(($urlMatcherFactoryProvider, $locationProvider, $httpProvider, $urlRouterProvider) => {

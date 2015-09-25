@@ -17,6 +17,9 @@
       <span translate>NEWPOST</span>
     </md-button>
     <div flex></div>
+    <md-select ng-model="language" ng-change="header.selectLanguage(language)" aria-label="Switch language">
+      <md-option ng-repeat="language in header.languages" value="{{language.key}}">{{language.value}}</md-option>
+    </md-select>
     <md-button class="md-icon-button" ng-click="header.logout()" aria-label="logout">
       <md-icon md-svg-icon="log-out"></md-icon>
     </md-button>

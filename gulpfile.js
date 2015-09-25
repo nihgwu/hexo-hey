@@ -25,8 +25,8 @@ var options = {
       'ace-builds': {
         main: ['src-noconflict/ace.js', 'src-noconflict/mode-markdown.js', 'src-noconflict/mode-yaml.js']
       },
-      'it-date-time-picker': {
-        main: ['dist/itDateTimePicker.js', 'dist/styles/itDateTimePicker.css']
+      'moment': {
+        main: ['moment.js', 'locale/zh-cn.js', 'locale/en-gb.js']
       }
     }
   }

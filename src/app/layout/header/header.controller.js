@@ -2,10 +2,24 @@
 
 class HeaderCtrl {
   /** @ngInject */
-  constructor($state, $mdSidenav, AuthService) {
+  constructor($state, $mdSidenav, $window, $translate, amMoment, AuthService) {
     angular.extend(this, {
-      $state, $mdSidenav, AuthService
+      $state, $mdSidenav, $window, $translate, amMoment, AuthService
     });
+    this.language = 'en-GB';
+    this.languages = [{
+      key: 'en-GB',
+      value: 'EN'
+    }, {
+      key: 'zh-CN',
+      value: '中'
+    }];
+  }
+
+  selectLanguage(language) {
+    this.$translate.use(language);
+    this.amMoment.changeLocale(language);
+    this.$window.localStorage.language = language;
   }
 
   logout() {
