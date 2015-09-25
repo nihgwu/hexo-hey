@@ -107,6 +107,7 @@ angular
     'INPUTSLUG': 'Please input the slug',
     'INPUTSLUGEXIST': 'Slug already exists',
     'INPUTDATE': 'Should be in yyyy-MM-dd( HH:mm:ss) format',
+    'INPUTSEARCH': 'Filter by title, category or tag',
 
     'CONTENTDELETEPOST': 'Do you really want to delete this post?',
 
@@ -146,6 +147,7 @@ angular
     'INPUTSLUG': '请输入别名',
     'INPUTSLUGEXIST': '别名已存在',
     'INPUTDATE': '时间格式 yyyy-MM-dd( HH:mm:ss)',
+    'INPUTSEARCH': '根据标题、分类或标签过滤',
 
     'CONTENTDELETEPOST': '确定删除这篇文章？',
 

@@ -1,8 +1,18 @@
 <md-content layout="row" flex id="post-list-content">
   <md-sidenav flex="30" layout="column" md-component-id="postsMenu" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-toolbar class="list-header md-accent" md-scroll-shrink ng-if="list.posts.length>10">
+      <div class="md-toolbar-tools" flex layout="row">
+        <md-input-container md-no-float flex>
+          <input ng-model="searchText" ng-change="list.search(searchText)" placeholder="{{'INPUTSEARCH' | translate}}">
+        </md-input-container>
+        <md-button ng-show="searchText" ng-click="searchText='';list.search(searchText)" class="md-icon-button" aria-label="clear">
+          <md-icon md-svg-icon="close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
     <md-content flex>
-      <md-list flex>
-        <md-list-item ng-class="{'active': post.slug == list.$state.params.slug}" ng-click="list.detail(post)" class="md-2-line" ng-repeat="post in list.posts">
+      <md-list>
+        <md-list-item ng-class="{'active': post.slug == list.$state.params.slug}" ng-click="list.detail(post)" class="md-2-line" ng-repeat="post in list.filteredPosts">
           <div class="md-list-item-text">
             <h3>{{post.title}}</h3>
             <p ng-show="post.published">{{'PUBLISHED' | translate}} <span am-time-ago="post.date"></span></p>

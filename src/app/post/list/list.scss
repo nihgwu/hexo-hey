@@ -18,4 +18,13 @@
       }
     }
   }
+  .list-header {
+    md-input-container {
+      padding-bottom: 2px;
+      input {
+        border-width: 0;
+        padding: 0;
+      }
+    }
+  }
 }
