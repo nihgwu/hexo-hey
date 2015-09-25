@@ -17,6 +17,10 @@ class SettingsCtrl {
       this.$translate('SUCCESSTHEMECONFIGUPDATE').then(SUCCESSTHEMECONFIGUPDATE => {
         this.Toast.show(SUCCESSTHEMECONFIGUPDATE);
       });
+    }).catch(() => {
+      this.$translate('ERRORTHEMECONFIGUPDATE').then(ERRORTHEMECONFIGUPDATE => {
+        this.Toast.show(ERRORTHEMECONFIGUPDATE);
+      });
     });
   }
 

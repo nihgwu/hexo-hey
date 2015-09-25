@@ -114,9 +114,14 @@ angular
     'SUCCESSTHEMECONFIGUPDATE': 'Theme config updated',
     'SUCCESSPOSTDELETE': 'Post deleted',
     'SUCCESSPOSTUPDATE': 'Post updated',
+
+    'ERRORUSER': 'Error username or password',
+    'ERRORTHEMECONFIGUPDATE': 'Theme config update error',
+    'ERRORPOSTUPDATE': 'Update post error',
+    'ERRORPOSTDELETE': 'Delete post error'
   });
 
-  $translateProvider.translations('zh', {
+  $translateProvider.translations('zh-CN', {
     'USERNAME': '用户名',
     'PASSWORD': '密码',
     'LOGIN': '登录',
@@ -154,10 +159,16 @@ angular
     'SUCCESSTHEMECONFIGUPDATE': '主题设置更新成功',
     'SUCCESSPOSTDELETE': '文章删除成功',
     'SUCCESSPOSTUPDATE': '文章更新成功',
+
+    'ERRORUSER': '用户名或密码错误',
+    'ERRORTHEMECONFIGUPDATE': '主题设置更新失败',
+    'ERRORPOSTUPDATE': '更新文章失败',
+    'ERRORPOSTDELETE': '删除文章失败'
   });
 
   $translateProvider.useSanitizeValueStrategy(null);
-  $translateProvider.preferredLanguage('en');
+  $translateProvider.fallbackLanguage('en');
+  $translateProvider.determinePreferredLanguage();
 })
 
 .config(($urlMatcherFactoryProvider, $locationProvider, $httpProvider, $urlRouterProvider) => {

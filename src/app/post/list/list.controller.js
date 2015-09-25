@@ -33,7 +33,6 @@ class PostListCtrl {
       return;
     }
     text = text.toLowerCase();
-    console.log(text);
     this.filteredPosts = this.posts.filter(post => {
       if (post.title.toLowerCase().indexOf(text) !== -1) {
         return true;

@@ -62,7 +62,11 @@ class PostEditCtrl {
       this.$state.go('post.detail', {
         slug: data.slug
       });
-    }).catch(err => this.Toast.show(err.data));
+    }).catch(() => {
+      this.$translate('ERRORPOSTUPDATE').then(ERRORPOSTUPDATE => {
+        this.Toast.show(ERRORPOSTUPDATE);
+      });
+    });
   }
 
   cancel() {
@@ -83,7 +87,11 @@ class PostEditCtrl {
         this.PostService.deletePost(this.post.id).then(() => {
           this.Toast.show(translations.SUCCESSPOSTDELETE);
           this.$state.go('post.list');
-        }).catch(err => this.Toast.show(err.data));
+        }).catch(() => {
+          this.$translate('ERRORPOSTDELETE').then(ERRORPOSTDELETE => {
+            this.Toast.show(ERRORPOSTDELETE);
+          });
+        });
       });
     });
   }
