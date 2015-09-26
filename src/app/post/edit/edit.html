@@ -14,8 +14,8 @@
     </div>
   </md-toolbar>
   <md-content layout="row" flex>
-    <md-content class="editor-container" layout="column" flex ng-hide="!$root.$mdMedia('gt-md') && vm.preview">
-      <div flex ng-model="vm.post.content" ui-ace="{mode:'markdown', useWrapMode: true, showGutter: false, onLoad: post.aceLoaded, onChange: vm.aceChanged}">
+    <md-content flex ng-hide="!$root.$mdMedia('gt-md') && vm.preview">
+      <div flex ng-model="vm.post.content" ui-codemirror="{ onLoad : vm.codemirrorLoaded }" ui-refresh="vm.refresh" ui-codemirror-opts="{mode:'gfm', lineWrapping: true, viewportMargin: 1000}">
       </div>
     </md-content>
     <md-content flex ng-hide="!$root.$mdMedia('gt-md') && !vm.preview">

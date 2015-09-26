@@ -29,6 +29,12 @@ class AuthInterceptor {
 
       return that.$q.reject(response);
     }
+    if (response.status === 404) {
+      that.$timeout(function() {
+        that.$location.path('/posts');
+      }, 0);
+      return that.$q.reject(response);
+    }
     return that.$q.reject(response);
   }
 

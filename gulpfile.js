@@ -22,8 +22,8 @@ var options = {
       'ace-builds': '1.2.0'
     },
     overrides: {
-      'ace-builds': {
-        main: ['src-noconflict/ace.js', 'src-noconflict/mode-markdown.js', 'src-noconflict/mode-yaml.js']
+      'codemirror': {
+        main: ['lib/codemirror.js', 'lib/codemirror.css', 'addon/mode/overlay.js', 'mode/markdown/markdown.js', 'mode/gfm/gfm.js', 'mode/yaml/yaml.js']
       },
       'moment': {
         main: ['moment.js', 'locale/zh-cn.js', 'locale/en-gb.js']

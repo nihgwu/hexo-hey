@@ -2,14 +2,14 @@
 
 class SettingsCtrl {
   /** @ngInject */
-  constructor($state, $mdToast, $translate, Toast, SettingsService) {
+  constructor($timeout, $state, $translate, Toast, SettingsService, config) {
     angular.extend(this, {
-      $state, $mdToast, $translate, Toast, SettingsService
+      $timeout, $state, $translate, Toast, SettingsService, config
     });
 
-    SettingsService.getConfig().then(data => {
-      this.config = angular.extend({}, data);
-    });
+    this.$timeout(() => {
+      this.refresh = true;
+    }, 0);
   }
 
   updateConfig() {

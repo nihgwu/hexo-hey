@@ -2,33 +2,20 @@
 
 class PostEditCtrl {
   /** @ngInject */
-  constructor($mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, Toast, PostService) {
+  constructor($timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Toast, PostService, post) {
     angular.extend(this, {
-      $mdSidenav, $mdDialog, $state, $stateParams, $filter, $translate, Toast, PostService
+      $timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Toast, PostService, post
     });
 
     this.slug = $stateParams.slug;
     this.searchText = null;
     this.selectedItem = null;
     this.navId = 'settingsView';
-    if (!this.slug) {
-      this.post = {
-        title: 'Untitled',
-        slug: 'untitled-' + new Date().getTime(),
-        date: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
-        tags: [],
-        categories: []
-      };
-    } else {
-      PostService.getPost(this.slug).then(data => {
-          if (data.content.indexOf('\n') === 0) {
-            data.content = data.content.slice(1);
-          }
-          data.date = $filter('date')(data.date, 'yyyy-MM-dd HH:mm:ss');
-          this.post = Object.assign({}, data);
-        })
-        .catch(() => this.$state.go('post.list'));
-    }
+
+    $timeout(() => {
+      this.refresh = true;
+    }, 0);
+
     PostService.getCategories().then(data => this.categories = data);
     PostService.getTags().then(data => this.tags = data);
   }

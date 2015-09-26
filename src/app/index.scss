@@ -3,15 +3,15 @@ html {
   //font-family: 'Roboto Slab', serif;
 }
 
-md-content {
-  overflow-x: hidden;
-}
-
 .browsehappy {
   margin: 0;
   background: #eee;
   color: #000;
   padding: 0.5em;
+}
+
+md-content {
+  overflow-x: hidden;
 }
 
 md-input-container[md-float-bottom] {
@@ -30,25 +30,26 @@ md-input-container[md-no-messages] {
   padding-bottom: 2px;
 }
 
-.ion {
-  font-size: 24px;
-}
-
 .text-center {
   text-align: center;
 }
 
-.editor-container {
-  background-color: #eee;
+.CodeMirror {
+  height: auto;
+  background-color: darken(#fff, 5);
   padding: 16px;
-  .ace_editor {
-    background-color: #eee;
-    //font: inherit;
+  font: inherit;
+  line-height: 1.6;
+  pre {
+    padding: 0;
+  }
+  .CodeMirror-lines {
+    padding: 0;
   }
 }
 
 .markdown-body {
-  padding: 16px;
+  margin: 16px;
 }
 
 

@@ -15,7 +15,17 @@ let SettingsModule = angular
       parent: 'root',
       templateUrl: 'app/settings/settings.html',
       controller: 'SettingsCtrl',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      resolve: {
+        config: ($q, SettingsService) => {
+          let q = $q.defer();
+          SettingsService.getConfig().then(data => {
+            let config = angular.extend({}, data);
+            q.resolve(config);
+          }).catch(() => q.reject());
+          return q.promise;
+        }
+      }
     });
 });
 

@@ -15,7 +15,7 @@ angular
     'ngMaterial',
     'ui.router',
     'hc.marked',
-    'ui.ace',
+    'ui.codemirror',
     'angularMoment',
     'pascalprecht.translate',
 
@@ -46,6 +46,13 @@ angular
       }, 0);
     }
   });
+  $rootScope.$on('$routeChangeError', function(arg1, arg2, arg3, arg4) {
+    if (arg4.status == 404) {
+      $timeout(function() {
+        $location.path('/posts');
+      }, 0);
+    }
+  });
 })
 
 .constant('Config', {
@@ -61,7 +68,7 @@ angular
 })
 
 .config(($mdIconProvider) => {
-  let icons = ['logo', 'code', 'pound', 'gear-a', 'plus', 'log-out', 'edit', 'eye', 'eye-disabled', 'more', 'close', 'checkmark'];
+  let icons = ['logo', 'code', 'pound', 'gear-a', 'plus', 'log-out', 'edit', 'eye', 'eye-disabled', 'more', 'close', 'checkmark', 'shuffle'];
   icons.forEach(icon => {
     $mdIconProvider.icon(icon, `assets/icons/${icon}.svg`);
   });

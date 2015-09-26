@@ -13,7 +13,12 @@ let PostDetailModule = angular
       parent: 'post.list',
       templateUrl: 'app/post/detail/detail.html',
       controller: 'PostDetailCtrl',
-      controllerAs: 'detail'
+      controllerAs: 'detail',
+      resolve: {
+        post: ($stateParams, PostService) => {
+          return PostService.getPost($stateParams.slug)
+        }
+      }
     });
 });
 

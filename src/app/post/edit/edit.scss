@@ -4,10 +4,20 @@
       padding-bottom: 2px;
       input {
         border-width: 0;
-        line-height: 48px;
-        font-size: 36px;
-        height: 48px;
-        padding: 2px;
+        font-size: 32px;
+        @media only screen and (max-width: 600px) and (min-width: 0) and (orientation: portrait) {
+          & {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+  .CodeMirror {
+    height: calc(100vh - 160px);
+    @media only screen and (max-width: 600px) and (min-width: 0) and (orientation: portrait) {
+      & {
+        height: calc(100vh - 148px);
       }
     }
   }

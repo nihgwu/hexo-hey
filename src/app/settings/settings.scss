@@ -1,0 +1,10 @@
+#settings-content {
+  .CodeMirror {
+    height: calc(100vh - 142px);
+    @media only screen and (max-width: 600px) and (min-width: 0) and (orientation: portrait) {
+      & {
+        height: calc(100vh - 130px);
+      }
+    }
+  }
+}
