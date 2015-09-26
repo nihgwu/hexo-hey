@@ -29,7 +29,7 @@ class PostService {
     }
     return this.$http.get(this.Config.APIURL + '/posts/' + slug).then(res => {
       var post = this.posts.find(post => post.slug === slug) || {};
-      return Object.assign(post, res.data);
+      return angular.extend(post, res.data);
     });
   }
 

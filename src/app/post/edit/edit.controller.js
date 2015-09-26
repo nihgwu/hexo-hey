@@ -42,7 +42,7 @@ class PostEditCtrl {
       this.closeSettings();
       return;
     }
-    let post = Object.assign({}, this.post);
+    let post = angular.extend({}, this.post);
     if (angular.isUndefined(publish)) {
       post.layout = this.post.published ? 'post' : 'draft';
     } else {

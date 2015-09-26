@@ -36,7 +36,7 @@ let PostEditModule = angular
         post: ($q, $stateParams, $filter, PostService) => {
           let q = $q.defer();
           PostService.getPost($stateParams.slug).then(data => {
-            let post = Object.assign({}, data);
+            let post = angular.extend({}, data);
             if (post.content.indexOf('\n') === 0) {
               post.content = post.content.slice(1);
             }
