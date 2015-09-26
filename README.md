@@ -18,7 +18,7 @@ passowrd: hey
 * authentication: [jwt](https://github.com/auth0/node-jsonwebtoken)
 * markdown parser: [marked](https://github.com/chjj/marked)
 * markdown style: [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
-* markdown editor: [ace](https://github.com/ajaxorg/ace-builds)
+* markdown editor: [codemirror](https://github.com/codemirror/CodeMirror)
 
 ## Usage
 ### 1. install hexo-hey
