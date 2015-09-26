@@ -31,6 +31,8 @@ class HeaderCtrl {
       return this.$state.go('post.detail', {
         slug: this.$state.params.slug
       });
+    } else if (this.$state.is('post.create') || this.$state.is('settings')) {
+      return this.$state.go('post.list');
     }
     return this.$mdSidenav('postsMenu').toggle();
   }
