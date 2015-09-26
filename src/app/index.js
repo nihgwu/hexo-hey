@@ -47,7 +47,7 @@ angular
     }
   });
   $rootScope.$on('$routeChangeError', function(arg1, arg2, arg3, arg4) {
-    if (arg4.status == 404) {
+    if (arg4.status === 404) {
       $timeout(function() {
         $location.path('/posts');
       }, 0);
@@ -115,6 +115,7 @@ angular
 
     'INPUTUSERNAME': 'Please input the username',
     'INPUTPASSWORD': 'Please input the password',
+    'INPUTTITLE': 'Please input the title',
     'INPUTSLUG': 'Please input the slug',
     'INPUTSLUGEXIST': 'Slug already exists',
     'INPUTDATE': 'Should be in yyyy-MM-dd( HH:mm:ss) format',
@@ -160,6 +161,7 @@ angular
 
     'INPUTUSERNAME': '请输入用户名',
     'INPUTPASSWORD': '请输入密码',
+    'INPUTTITLE': '请输入标题',
     'INPUTSLUG': '请输入别名',
     'INPUTSLUGEXIST': '别名已存在',
     'INPUTDATE': '时间格式 yyyy-MM-dd( HH:mm:ss)',

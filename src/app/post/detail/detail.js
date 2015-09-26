@@ -16,7 +16,7 @@ let PostDetailModule = angular
       controllerAs: 'detail',
       resolve: {
         post: ($stateParams, PostService) => {
-          return PostService.getPost($stateParams.slug)
+          return PostService.getPost($stateParams.slug);
         }
       }
     });

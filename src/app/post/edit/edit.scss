@@ -5,6 +5,7 @@
       input {
         border-width: 0;
         font-size: 32px;
+        line-height: 40px;
         @media only screen and (max-width: 600px) and (min-width: 0) and (orientation: portrait) {
           & {
             font-size: 24px;

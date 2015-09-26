@@ -35,6 +35,13 @@ class PostEditCtrl {
   }
 
   update(publish) {
+    if (!this.post.title) {
+      this.$translate('INPUTTITLE').then(INPUTTITLE => {
+        this.Toast.show(INPUTTITLE);
+      });
+      this.closeSettings();
+      return;
+    }
     let post = Object.assign({}, this.post);
     if (angular.isUndefined(publish)) {
       post.layout = this.post.published ? 'post' : 'draft';
