@@ -1,6 +1,6 @@
 <md-toolbar id="layout-header">
   <div class="md-toolbar-tools" flex layout="row" hide-sm>
-    <md-button class="md-icon-button" aria-label="hey">
+    <md-button href="/" class="md-icon-button" aria-label="hey">
       <md-icon md-svg-icon="logo"></md-icon>
     </md-button>
     <h2>Hey Hexo</h2>
@@ -17,19 +17,29 @@
       <span translate>NEWPOST</span>
     </md-button>
     <div flex></div>
-    <md-select ng-model="language" ng-change="header.selectLanguage(language)" aria-label="Switch language">
+    <!--<md-select ng-model="language" ng-change="header.selectLanguage(language)" aria-label="Switch language">
       <md-option ng-repeat="language in header.languages" value="{{language.key}}">{{language.value}}</md-option>
-    </md-select>
+    </md-select>-->
+    <md-menu>
+      <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)" aria-label="Switch language">
+        <md-icon md-menu-origin md-svg-icon="shuffle"></md-icon>
+      </md-button>
+      <md-menu-content width="2">
+        <md-menu-item ng-repeat="language in header.languages">
+          <md-button ng-click="header.selectLanguage(language.key)"> {{language.value}} </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
     <md-button class="md-icon-button" ng-click="header.logout()" aria-label="logout">
       <md-icon md-svg-icon="log-out"></md-icon>
     </md-button>
   </div>
   <div class="md-toolbar-tools" flex layout="row" hide show-sm>
-    <md-button class="md-icon-button" ng-click="header.openSidebar()" aria-label="hey">
+    <md-button href="/" class="md-icon-button" aria-label="hey">
       <md-icon md-svg-icon="logo"></md-icon>
     </md-button>
     <div flex></div>
-    <md-button class="md-icon-button" ui-sref="post.list" aria-label="Posts">
+    <md-button class="md-icon-button" ng-click="header.openSidebar()" aria-label="Posts">
       <md-icon md-svg-icon="pound"></md-icon>
     </md-button>
     <md-button class="md-icon-button" ui-sref="settings" aria-label="Settings">

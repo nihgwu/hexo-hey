@@ -6,7 +6,7 @@ class HeaderCtrl {
     angular.extend(this, {
       $state, $mdSidenav, $window, $translate, amMoment, AuthService
     });
-    this.language = 'en-GB';
+
     this.languages = [{
       key: 'en-GB',
       value: 'EN'
@@ -29,10 +29,8 @@ class HeaderCtrl {
   openSidebar() {
     if (this.$state.is('post.edit')) {
       return this.$state.go('post.detail', {
-        id: this.$state.params.id
+        slug: this.$state.params.slug
       });
-    } else if (this.$state.is('post.create') || this.$state.is('settings')) {
-      return this.$state.go('post.list');
     }
     return this.$mdSidenav('postsMenu').toggle();
   }
