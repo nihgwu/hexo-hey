@@ -36,8 +36,8 @@ let PostEditModule = angular
         post: ($q, $stateParams, $filter, PostService) => {
           let q = $q.defer();
           PostService.getPost($stateParams.slug).then(data => {
-            let post = angular.extend({}, data);
-            if (post.content.indexOf('\n') === 0) {
+            let post = Object.assign({}, data);
+            if (post.content.startsWith('\n')) {
               post.content = post.content.slice(1);
             }
             post.date = $filter('date')(post.date, 'yyyy-MM-dd HH:mm:ss');

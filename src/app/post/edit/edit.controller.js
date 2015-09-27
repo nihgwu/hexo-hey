@@ -3,7 +3,7 @@
 class PostEditCtrl {
   /** @ngInject */
   constructor($timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Toast, PostService, post) {
-    angular.extend(this, {
+    Object.assign(this, {
       $timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Toast, PostService, post
     });
 
@@ -42,7 +42,7 @@ class PostEditCtrl {
       this.closeSettings();
       return;
     }
-    let post = angular.extend({}, this.post);
+    let post = Object.assign({}, this.post);
     if (angular.isUndefined(publish)) {
       post.layout = this.post.published ? 'post' : 'draft';
     } else {
@@ -69,7 +69,7 @@ class PostEditCtrl {
 
   remove(ev) {
     this.$translate(['DELETEPOST', 'CONTENTDELETEPOST', 'DELETE', 'CANCEL', 'SUCCESSPOSTDELETE']).then(translations => {
-      var confirm = this.$mdDialog.confirm()
+      let confirm = this.$mdDialog.confirm()
         .title(translations.DELETEPOST)
         .content(translations.CONTENTDELETEPOST)
         .ariaLabel('Delete post')

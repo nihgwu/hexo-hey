@@ -3,7 +3,7 @@
 class LoginCtrl {
   /** @ngInject */
   constructor($state, $translate, Toast, AuthService) {
-    angular.extend(this, {
+    Object.assign(this, {
       $state, $translate, Toast, AuthService
     });
     this.user = {};

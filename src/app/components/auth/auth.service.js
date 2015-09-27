@@ -3,7 +3,7 @@
 class AuthService {
   /** @ngInject */
   constructor($state, $http, $q, $cookies, Config) {
-    angular.extend(this, {
+    Object.assign(this, {
       $state, $http, $q, $cookies, Config
     });
   }
@@ -13,18 +13,18 @@ class AuthService {
   }
 
   login(user) {
-    var deferred = this.$q.defer();
+    let q = this.$q.defer();
     this.$http.post(this.Config.APIURL + '/login', {
       name: user.name,
       password: user.password
     }).success(data => {
       this.$cookies.put('token', data.token);
-      deferred.resolve(data);
+      q.resolve(data);
     }).error(err => {
       this.logout();
-      deferred.reject(err);
+      q.reject(err);
     });
-    return deferred.promise;
+    return q.promise;
   }
 
   logout() {

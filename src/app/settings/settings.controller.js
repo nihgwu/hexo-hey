@@ -3,7 +3,7 @@
 class SettingsCtrl {
   /** @ngInject */
   constructor($timeout, $state, $translate, Toast, SettingsService, config) {
-    angular.extend(this, {
+    Object.assign(this, {
       $timeout, $state, $translate, Toast, SettingsService, config
     });
 
@@ -22,23 +22,6 @@ class SettingsCtrl {
         this.Toast.show(ERRORTHEMECONFIGUPDATE);
       });
     });
-  }
-
-  themeConfigLoaded(editor) {
-    editor.$blockScrolling = Infinity;
-    editor.getSession().setUseWorker(false);
-    editor.getSession().setUseWrapMode(true);
-    editor.setHighlightActiveLine(false);
-    editor.setShowPrintMargin(false);
-  }
-
-  hexoConfigLoaded(editor) {
-    editor.$blockScrolling = Infinity;
-    editor.getSession().setUseWorker(false);
-    editor.getSession().setUseWrapMode(true);
-    editor.setHighlightActiveLine(false);
-    editor.setShowPrintMargin(false);
-    editor.setReadOnly(true);
   }
 }
 

@@ -3,7 +3,7 @@
 class PostListCtrl {
   /** @ngInject */
   constructor($state, $mdSidenav, PostService) {
-    angular.extend(this, {
+    Object.assign(this, {
       $state, $mdSidenav, PostService
     });
 
@@ -34,13 +34,13 @@ class PostListCtrl {
     }
     text = text.toLowerCase();
     this.filteredPosts = this.posts.filter(post => {
-      if (post.title.toLowerCase().indexOf(text) !== -1) {
+      if (post.title.toLowerCase().includes(text)) {
         return true;
       }
-      if (post.categories.filter(x => x.toLowerCase().indexOf(text) !== -1).length > 0) {
+      if (post.categories.find(x => x.toLowerCase().includes(text))) {
         return true;
       }
-      if (post.tags.filter(x => x.toLowerCase().indexOf(text) !== -1).length > 0) {
+      if (post.tags.find(x => x.toLowerCase().includes(text))) {
         return true;
       }
     });

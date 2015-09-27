@@ -20,7 +20,7 @@ let SettingsModule = angular
         config: ($q, SettingsService) => {
           let q = $q.defer();
           SettingsService.getConfig().then(data => {
-            let config = angular.extend({}, data);
+            let config = Object.assign({}, data);
             q.resolve(config);
           }).catch(() => q.reject());
           return q.promise;

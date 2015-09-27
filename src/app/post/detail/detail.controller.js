@@ -3,7 +3,7 @@
 class PostDetailCtrl {
   /** @ngInject */
   constructor($state, post) {
-    angular.extend(this, {
+    Object.assign(this, {
       $state, post
     });
   }

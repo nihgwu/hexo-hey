@@ -3,7 +3,7 @@
 class PostService {
   /** @ngInject */
   constructor($http, $q, Config) {
-    angular.extend(this, {
+    Object.assign(this, {
       $http, $q, Config
     });
 
@@ -23,13 +23,13 @@ class PostService {
   }
 
   getPost(slug) {
-    var post = this.posts.find(post => post.slug === slug);
+    let post = this.posts.find(post => post.slug === slug);
     if (post && !angular.isUndefined(post.content)) {
       return this.$q.resolve(post);
     }
     return this.$http.get(this.Config.APIURL + '/posts/' + slug).then(res => {
-      var post = this.posts.find(post => post.slug === slug) || {};
-      return angular.extend(post, res.data);
+      let post = this.posts.find(post => post.slug === slug) || {};
+      return Object.assign(post, res.data);
     });
   }
 

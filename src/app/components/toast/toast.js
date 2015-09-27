@@ -3,7 +3,7 @@
 class Toast {
   /** @ngInject */
   constructor($mdToast) {
-    angular.extend(this, {
+    Object.assign(this, {
       $mdToast
     });
   }

@@ -194,7 +194,7 @@ angular
 
   //$urlRouterProvider.otherwise('/posts');
   $urlRouterProvider.otherwise($injector => {
-    var $state = $injector.get('$state');
+    let $state = $injector.get('$state');
     $state.go('post.list');
   });
 });

@@ -3,7 +3,7 @@
 class HeaderCtrl {
   /** @ngInject */
   constructor($state, $mdSidenav, $window, $translate, amMoment, AuthService) {
-    angular.extend(this, {
+    Object.assign(this, {
       $state, $mdSidenav, $window, $translate, amMoment, AuthService
     });
 

@@ -2,7 +2,7 @@
 let that;
 class AuthInterceptor {
   constructor($q, $cookies, $location, $timeout) {
-    angular.extend(this, {
+    Object.assign(this, {
       $q, $cookies, $location, $timeout
     });
     that = this;

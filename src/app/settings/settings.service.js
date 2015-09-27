@@ -3,12 +3,11 @@
 class SettingsService {
   /** @ngInject */
   constructor($http, $q, Config) {
-    angular.extend(this, {
+    Object.assign(this, {
       $http, $q, Config
     });
     this.config = {};
   }
-
   getConfig() {
     if (this.config.hexoConfig) {
       return this.$q.resolve(this.config);
