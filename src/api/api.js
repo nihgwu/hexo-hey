@@ -4,6 +4,7 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import jwtExpress from 'express-jwt';
 import connectRoute from 'connect-route';
+import multer from 'multer';
 
 function router(api, hexo) {
   let Post = hexo.model('Post');
@@ -167,6 +168,26 @@ function router(api, hexo) {
       themeConfig
     });
   });
+
+  api.post('/upload', (req, res) => {
+    if (!req.file || !req.file.filename) {
+      res.status(400).json({
+        error: 'Error while uploading file'
+      });
+      return;
+    }
+    hexo.source.process(req.file.filename).then(() => {
+      process.nextTick(() => {
+        res.json({
+          filename: hexo.config.url + '/' + req.file.filename
+        });
+      });
+    }).catch(() => {
+      res.status(400).json({
+        error: 'Error while uploading file'
+      });
+    });
+  });
 }
 
 export default function(app, hexo) {
@@ -176,6 +197,21 @@ export default function(app, hexo) {
   }).unless({
     path: ['/api/login']
   }));
+
+  let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, hexo.source_dir);
+    },
+    filename: (req, file, cb) => {
+      let ext = file.originalname.substring(file.originalname.lastIndexOf('.')) || '.png';
+      let filename = 'images/' + Date.now() + ext;
+      cb(null, filename);
+    }
+  });
+  let upload = multer({
+    storage: storage
+  });
+  app.use('/api/upload', upload.single('file'));
 
   app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {

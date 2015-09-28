@@ -7,6 +7,8 @@ import cors from 'cors';
 import api from './api';
 
 hexo.extend.filter.register('server_middleware', function(app) {
+  app.use('/admin', serveStatic(path.join(__dirname, 'www')));
+
   if (hexo.config.admin.cors) {
     app.use(cors({
       origin: hexo.config.admin.cors
@@ -15,8 +17,9 @@ hexo.extend.filter.register('server_middleware', function(app) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
-  app.use(bodyParser.json());
-  app.use('/admin', serveStatic(path.join(__dirname, 'www')));
+  app.use(bodyParser.json({
+    limit: '10mb'
+  }));
 
   app.use((req, res, next) => {
     res.status = function(code) {

@@ -23,6 +23,8 @@ var _api = require('./api');
 var _api2 = _interopRequireDefault(_api);
 
 hexo.extend.filter.register('server_middleware', function (app) {
+  app.use('/admin', (0, _serveStatic2['default'])(_path2['default'].join(__dirname, 'www')));
+
   if (hexo.config.admin.cors) {
     app.use((0, _cors2['default'])({
       origin: hexo.config.admin.cors
@@ -31,8 +33,9 @@ hexo.extend.filter.register('server_middleware', function (app) {
   app.use(_bodyParser2['default'].urlencoded({
     extended: true
   }));
-  app.use(_bodyParser2['default'].json());
-  app.use('/admin', (0, _serveStatic2['default'])(_path2['default'].join(__dirname, 'www')));
+  app.use(_bodyParser2['default'].json({
+    limit: '10mb'
+  }));
 
   app.use(function (req, res, next) {
     res.status = function (code) {

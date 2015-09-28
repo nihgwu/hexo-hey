@@ -14,7 +14,8 @@
     "angular-translate": "~2.8.0",
     "angular-ui-codemirror": "~0.3.0",
     "angular-ui-router": "latest",
-    "github-markdown-css": "~2.0.9"
+    "github-markdown-css": "~2.0.9",
+    "inline-attachment": "~2.0.1"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*"

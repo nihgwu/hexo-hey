@@ -27,6 +27,9 @@ var options = {
       },
       'moment': {
         main: ['moment.js', 'locale/zh-cn.js', 'locale/en-gb.js']
+      },
+      'inline-attachment': {
+        main: ['src/inline-attachment.js', 'src/codemirror.inline-attachment.js']
       }
     }
   }

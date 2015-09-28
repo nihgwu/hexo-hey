@@ -18,7 +18,7 @@ let PostEditModule = angular
         post: ($filter) => {
           return {
             title: 'Untitled',
-            slug: 'untitled-' + new Date().getTime(),
+            slug: 'untitled-' + Date.now(),
             date: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
             tags: [],
             categories: []

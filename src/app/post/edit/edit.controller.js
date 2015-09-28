@@ -2,15 +2,16 @@
 
 class PostEditCtrl {
   /** @ngInject */
-  constructor($timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Toast, PostService, post) {
+  constructor($window, $cookies, $timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Config, Toast, PostService, post) {
     Object.assign(this, {
-      $timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Toast, PostService, post
+      $window, $cookies, $timeout, $state, $stateParams, $mdSidenav, $mdDialog, $translate, Config, Toast, PostService, post
     });
 
     this.slug = $stateParams.slug;
     this.searchText = null;
     this.selectedItem = null;
     this.navId = 'settingsView';
+    this.codemirrorLoaded = this.codemirrorLoaded.bind(this);
 
     $timeout(() => {
       this.refresh = true;
@@ -98,6 +99,18 @@ class PostEditCtrl {
 
   closeSettings() {
     this.$mdSidenav(this.navId).close();
+  }
+
+  codemirrorLoaded(editor) {
+    let options = {
+      uploadUrl: this.Config.APIURL + '/upload',
+      progressText: '![Uploading image...]()',
+      urlText: '![image]({filename})',
+      extraHeaders: {
+        Authorization: 'Bearer ' + this.$cookies.get('token')
+      }
+    };
+    this.$window.inlineAttachment.editors.codemirror4.attach(editor, options);
   }
 }
 

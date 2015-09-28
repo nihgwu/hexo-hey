@@ -22,6 +22,10 @@ var _connectRoute = require('connect-route');
 
 var _connectRoute2 = _interopRequireDefault(_connectRoute);
 
+var _multer = require('multer');
+
+var _multer2 = _interopRequireDefault(_multer);
+
 function router(api, hexo) {
   var Post = hexo.model('Post');
   var Tag = hexo.model('Tag');
@@ -196,6 +200,26 @@ function router(api, hexo) {
       themeConfig: themeConfig
     });
   });
+
+  api.post('/upload', function (req, res) {
+    if (!req.file || !req.file.filename) {
+      res.status(400).json({
+        error: 'Error while uploading file'
+      });
+      return;
+    }
+    hexo.source.process(req.file.filename).then(function () {
+      process.nextTick(function () {
+        res.json({
+          filename: hexo.config.url + '/' + req.file.filename
+        });
+      });
+    })['catch'](function () {
+      res.status(400).json({
+        error: 'Error while uploading file'
+      });
+    });
+  });
 }
 
 exports['default'] = function (app, hexo) {
@@ -205,6 +229,21 @@ exports['default'] = function (app, hexo) {
   }).unless({
     path: ['/api/login']
   }));
+
+  var storage = _multer2['default'].diskStorage({
+    destination: function destination(req, file, cb) {
+      cb(null, hexo.source_dir);
+    },
+    filename: function filename(req, file, cb) {
+      var ext = file.originalname.substring(file.originalname.lastIndexOf('.')) || '.png';
+      var filename = 'images/' + Date.now() + ext;
+      cb(null, filename);
+    }
+  });
+  var upload = (0, _multer2['default'])({
+    storage: storage
+  });
+  app.use('/api/upload', upload.single('file'));
 
   app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
