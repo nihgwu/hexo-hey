@@ -230,6 +230,11 @@ exports['default'] = function (app, hexo) {
     path: ['/api/login']
   }));
 
+  _fs2['default'].stat(hexo.source_dir + 'images/', function (err) {
+    if (err) {
+      _fs2['default'].mkdirSync(hexo.source_dir + 'images/');
+    }
+  });
   var storage = _multer2['default'].diskStorage({
     destination: function destination(req, file, cb) {
       cb(null, hexo.source_dir);

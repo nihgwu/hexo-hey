@@ -198,6 +198,11 @@ export default function(app, hexo) {
     path: ['/api/login']
   }));
 
+  fs.stat(hexo.source_dir + 'images/', (err) => {
+    if (err) {
+      fs.mkdirSync(hexo.source_dir + 'images/');
+    }
+  });
   let storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, hexo.source_dir);

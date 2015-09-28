@@ -1,7 +1,7 @@
 'use strict';
 
-import serveStatic from 'serve-static';
 import path from 'path';
+import serveStatic from 'serve-static';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import api from './api';

@@ -2,13 +2,13 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _serveStatic = require('serve-static');
-
-var _serveStatic2 = _interopRequireDefault(_serveStatic);
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
+
+var _serveStatic = require('serve-static');
+
+var _serveStatic2 = _interopRequireDefault(_serveStatic);
 
 var _bodyParser = require('body-parser');
 
