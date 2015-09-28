@@ -1,6 +1,6 @@
 {
   "name": "hexo-hey",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "an admin plugin for hexo",
   "main": "index",
   "repository": {
