@@ -169,35 +169,6 @@ function router(api, hexo) {
     });
   });
 
-  api.post('/upload', (req, res) => {
-    if (!req.file || !req.file.filename) {
-      res.status(400).json({
-        error: 'Error while uploading file'
-      });
-      return;
-    }
-    hexo.source.process(req.file.filename).then(() => {
-      process.nextTick(() => {
-        res.json({
-          filename: hexo.config.url + '/' + req.file.filename
-        });
-      });
-    }).catch(() => {
-      res.status(400).json({
-        error: 'Error while uploading file'
-      });
-    });
-  });
-}
-
-export default function(app, hexo) {
-
-  app.use('/api', jwtExpress({
-    secret: hexo.config.admin.secret
-  }).unless({
-    path: ['/api/login']
-  }));
-
   fs.stat(hexo.source_dir + 'images/', (err) => {
     if (err) {
       fs.mkdirSync(hexo.source_dir + 'images/');
@@ -215,8 +186,37 @@ export default function(app, hexo) {
   });
   let upload = multer({
     storage: storage
+  }).single('file');
+  api.post('/upload', (req, res) => {
+    upload(req, res, (err) => {
+      if (err) {
+        res.status(400).json({
+          error: 'Error while uploading file'
+        });
+        return;
+      }
+      hexo.source.process(req.file.filename).then(() => {
+        process.nextTick(() => {
+          res.json({
+            filename: hexo.config.url + '/' + req.file.filename
+          });
+        });
+      }).catch(() => {
+        res.status(400).json({
+          error: 'Error while processing file'
+        });
+      });
+    });
   });
-  app.use('/api/upload', upload.single('file'));
+}
+
+export default function(app, hexo) {
+
+  app.use('/api', jwtExpress({
+    secret: hexo.config.admin.secret
+  }).unless({
+    path: ['/api/login']
+  }));
 
   app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
