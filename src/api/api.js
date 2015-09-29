@@ -12,11 +12,11 @@ function router(api, hexo) {
   let Category = hexo.model('Category');
 
   api.post('/login', (req, res) => {
-    var name = req.body.name;
-    var password = req.body.password;
-    var user = hexo.config.admin;
+    let name = req.body.name;
+    let password = req.body.password;
+    let user = hexo.config.admin;
     if (name === user.name && password === user.password) {
-      var token = jwt.sign(user.password, user.secret, {
+      let token = jwt.sign(user.password, user.secret, {
         expiresInMinutes: user.expire
       });
       res.json({
@@ -77,7 +77,7 @@ function router(api, hexo) {
       }
       fs.unlinkSync(hexo.source_dir + post.source);
     }
-    var post = {
+    let post = {
       title: req.body.title,
       slug: req.body.slug,
       content: req.body.content,
@@ -87,25 +87,27 @@ function router(api, hexo) {
       tags: req.body.tags,
     };
     hexo.post.create(post).then(data => {
-      var source = data.path.slice(hexo.source_dir.length);
+      let source = data.path.slice(hexo.source_dir.length);
       hexo.source.process(source).then(() => {
-        var post = Post.findOne({
-          source: source
+        process.nextTick(() => {
+          let post = Post.findOne({
+            source: source
+          });
+          post = {
+            id: post._id,
+            title: post.title,
+            slug: post.slug,
+            layout: post.layout,
+            link: post.permalink,
+            published: post.published,
+            content: post._content,
+            categories: post.categories.toArray().map(category => category.name),
+            tags: post.tags.toArray().map(tag => tag.name),
+            date: post.date,
+            excerpt: post.excerpt
+          };
+          res.json(post);
         });
-        post = {
-          id: post._id,
-          title: post.title,
-          slug: post.slug,
-          layout: post.layout,
-          link: post.permalink,
-          published: post.published,
-          content: post._content,
-          categories: post.categories.toArray().map(category => category.name),
-          tags: post.tags.toArray().map(tag => tag.name),
-          date: post.date,
-          excerpt: post.excerpt
-        };
-        res.json(post);
       }).catch(err => {
         console.log(err);
         res.status(500).send('Failed to create post');
@@ -125,7 +127,9 @@ function router(api, hexo) {
     fs.unlinkSync(hexo.source_dir + post.source);
 
     hexo.source.process().then(() => {
-      res.status(200).send('Post deleted');
+      process.nextTick(() => {
+        res.status(200).send('Post deleted');
+      });
     }).catch(err => {
       console.log(err);
       res.status(500).send('Failed to delete post');
