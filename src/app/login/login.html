@@ -7,7 +7,7 @@
           <label translate>USERNAME</label>
           <input name="name" ng-model="vm.user.name" required/>
           <div ng-messages="loginForm.name.$error" ng-if="loginForm.name.$dirty">
-            <div ng-message="required">{{'INPUTUSERNAME' | translate}}</div>
+            <div ng-message="required">{{'INPUT_USERNAME' | translate}}</div>
           </div>
         </md-input-container>
         <md-input-container md-is-error="loginForm.password.$error.required && loginForm.password.$dirty">

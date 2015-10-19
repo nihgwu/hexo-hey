@@ -14,12 +14,12 @@ class SettingsCtrl {
 
   updateConfig() {
     this.SettingsService.updateConfig(this.config).then(() => {
-      this.$translate('SUCCESSTHEMECONFIGUPDATE').then(SUCCESSTHEMECONFIGUPDATE => {
-        this.Toast.show(SUCCESSTHEMECONFIGUPDATE);
+      this.$translate('SUCCESS_THEME_CONFIG_UPDATE').then(SUCCESS_THEME_CONFIG_UPDATE => {
+        this.Toast.show(SUCCESS_THEME_CONFIG_UPDATE);
       });
     }).catch(() => {
-      this.$translate('ERRORTHEMECONFIGUPDATE').then(ERRORTHEMECONFIGUPDATE => {
-        this.Toast.show(ERRORTHEMECONFIGUPDATE);
+      this.$translate('ERROR_THEME_CONFIG_UPDATE').then(ERROR_THEME_CONFIG_UPDATE => {
+        this.Toast.show(ERROR_THEME_CONFIG_UPDATE);
       });
     });
   }

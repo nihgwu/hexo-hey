@@ -37,8 +37,8 @@ class PostEditCtrl {
 
   update(publish) {
     if (!this.post.title) {
-      this.$translate('INPUTTITLE').then(INPUTTITLE => {
-        this.Toast.show(INPUTTITLE);
+      this.$translate('INPUT_TITLE').then(INPUT_TITLE => {
+        this.Toast.show(INPUT_TITLE);
       });
       this.closeSettings();
       return;
@@ -51,15 +51,15 @@ class PostEditCtrl {
     }
     post.date = new Date(this.post.date);
     this.PostService.updatePost(post).then(data => {
-      this.$translate('SUCCESSPOSTUPDATE').then(SUCCESSPOSTUPDATE => {
-        this.Toast.show(SUCCESSPOSTUPDATE);
+      this.$translate('SUCCESS_POST_UPDATE').then(SUCCESS_POST_UPDATE => {
+        this.Toast.show(SUCCESS_POST_UPDATE);
       });
       this.$state.go('post.detail', {
         slug: data.slug
       });
     }).catch(() => {
-      this.$translate('ERRORPOSTUPDATE').then(ERRORPOSTUPDATE => {
-        this.Toast.show(ERRORPOSTUPDATE);
+      this.$translate('ERROR_POST_UPDATE').then(ERROR_POST_UPDATE => {
+        this.Toast.show(ERROR_POST_UPDATE);
       });
     });
   }
@@ -69,10 +69,10 @@ class PostEditCtrl {
   }
 
   remove(ev) {
-    this.$translate(['DELETEPOST', 'CONTENTDELETEPOST', 'DELETE', 'CANCEL', 'SUCCESSPOSTDELETE']).then(translations => {
+    this.$translate(['DELETE_POST', 'CONFIRM_DELETE_POST', 'DELETE', 'CANCEL', 'SUCCESS_POST_DELETE']).then(translations => {
       let confirm = this.$mdDialog.confirm()
-        .title(translations.DELETEPOST)
-        .content(translations.CONTENTDELETEPOST)
+        .title(translations.DELETE_POST)
+        .content(translations.CONFIRM_DELETE_POST)
         .ariaLabel('Delete post')
         .ok(translations.DELETE)
         .cancel(translations.CANCEL)
@@ -80,11 +80,11 @@ class PostEditCtrl {
 
       this.$mdDialog.show(confirm).then(() => {
         this.PostService.deletePost(this.post.id).then(() => {
-          this.Toast.show(translations.SUCCESSPOSTDELETE);
+          this.Toast.show(translations.SUCCESS_POST_DELETE);
           this.$state.go('post.list');
         }).catch(() => {
-          this.$translate('ERRORPOSTDELETE').then(ERRORPOSTDELETE => {
-            this.Toast.show(ERRORPOSTDELETE);
+          this.$translate('ERROR_POST_DELETE').then(ERROR_POST_DELETE => {
+            this.Toast.show(ERROR_POST_DELETE);
           });
         });
       });

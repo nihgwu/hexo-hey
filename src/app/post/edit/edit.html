@@ -25,7 +25,7 @@
   <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="settingsView">
     <md-toolbar class="md-accent">
       <div class="md-toolbar-tools">
-        <h2 translate>POSTSETTINGS</h2>
+        <h2 translate>POST_SETTINGS</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="vm.closeSettings()" aria-label="Close settings">
           <md-icon md-svg-icon="close"></md-icon>
@@ -38,15 +38,15 @@
           <label translate>SLUG</label>
           <input name="slug" type="text" ng-model="vm.post.slug" required ng-change="vm.checkUnique(editForm)">
           <div ng-messages="editForm.slug.$error">
-            <div ng-message="required">{{'INPUTSLUG' | translate}}</div>
-            <div ng-message="unique">{{'INPUTSLUGEXIST' | translate}}</div>
+            <div ng-message="required">{{'INPUT_SLUG' | translate}}</div>
+            <div ng-message="unique">{{'INPUT_SLUG_EXIST' | translate}}</div>
           </div>
         </md-input-container>
         <md-input-container>
           <label translate>DATE</label>
           <input name="date" type="text" pattern="^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])(\s([0-1][0-9]|[2][0-3])(:)([0-5][0-9])(:)([0-5][0-9]))?$" ng-model="vm.post.date">
           <div ng-messages="editForm.date.$error" ng-if="editForm.date.$dirty">
-            <div ng-message="pattern">{{'INPUTDATE' | translate}}</div>
+            <div ng-message="pattern">{{'INPUT_DATE' | translate}}</div>
           </div>
         </md-input-container>
         <md-input-container md-float-bottom ng-class="{'has-value': vm.post.categories.length}">
@@ -72,7 +72,7 @@
         <md-button ng-if="vm.slug" ng-click="vm.remove($event)" class="md-warn">{{'DELETE' | translate}}</md-button>
         <div ng-if="!vm.slug" flex layout="row" layout-align="space-between center">
           <md-button ng-disabled="!editForm.$valid" ng-click="vm.update(true)" class="md-primary md-raised">{{'PUBLISH' | translate}}</md-button>
-          <md-button ng-disabled="!editForm.$valid" ng-click="vm.update(false)" class="md-primary">{{'SAVEDRAFT' | translate}}</md-button>
+          <md-button ng-disabled="!editForm.$valid" ng-click="vm.update(false)" class="md-primary">{{'SAVE_DRAFT' | translate}}</md-button>
         </div>
         <md-button ng-if="!vm.slug" ng-click="vm.cancel()" class="md-warn">{{'CANCEL' | translate}}</md-button>
       </form>

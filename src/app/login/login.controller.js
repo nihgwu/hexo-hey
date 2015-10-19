@@ -13,8 +13,8 @@ class LoginCtrl {
     this.AuthService.login(this.user).then(() => {
       this.$state.go('post.list');
     }).catch(() => {
-      this.$translate('ERRORUSER').then(ERRORUSER => {
-        this.Toast.show(ERRORUSER);
+      this.$translate('ERROR_USER').then(ERROR_USER => {
+        this.Toast.show(ERROR_USER);
       });
     });
   }

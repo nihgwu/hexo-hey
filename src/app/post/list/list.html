@@ -3,7 +3,7 @@
     <md-toolbar class="list-header md-accent" md-scroll-shrink ng-if="list.posts.length>20">
       <div class="md-toolbar-tools" flex layout="row">
         <md-input-container md-no-float flex>
-          <input ng-model="searchText" ng-change="list.search(searchText)" placeholder="{{'INPUTSEARCH' | translate}}">
+          <input ng-model="searchText" ng-change="list.search(searchText)" placeholder="{{'INPUT_SEARCH' | translate}}">
         </md-input-container>
         <md-button ng-show="searchText" ng-click="searchText='';list.search(searchText)" class="md-icon-button" aria-label="clear">
           <md-icon md-svg-icon="close"></md-icon>
