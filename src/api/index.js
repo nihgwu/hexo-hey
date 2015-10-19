@@ -7,6 +7,9 @@ import cors from 'cors';
 import api from './api';
 
 hexo.extend.filter.register('server_middleware', function(app) {
+  if (!hexo.config.admin) {
+    return;
+  }
   app.use('/admin', serveStatic(path.join(__dirname, 'www')));
 
   if (hexo.config.admin.cors) {
