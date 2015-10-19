@@ -89,25 +89,23 @@ function router(api, hexo) {
     hexo.post.create(post).then(data => {
       let source = data.path.slice(hexo.source_dir.length);
       hexo.source.process(source).then(() => {
-        process.nextTick(() => {
-          let post = Post.findOne({
-            source: source
-          });
-          post = {
-            id: post._id,
-            title: post.title,
-            slug: post.slug,
-            layout: post.layout,
-            link: post.permalink,
-            published: post.published,
-            content: post._content,
-            categories: post.categories.toArray().map(category => category.name),
-            tags: post.tags.toArray().map(tag => tag.name),
-            date: post.date,
-            excerpt: post.excerpt
-          };
-          res.json(post);
+        let post = Post.findOne({
+          source: source
         });
+        post = {
+          id: post._id,
+          title: post.title,
+          slug: post.slug,
+          layout: post.layout,
+          link: post.permalink,
+          published: post.published,
+          content: post._content,
+          categories: post.categories.toArray().map(category => category.name),
+          tags: post.tags.toArray().map(tag => tag.name),
+          date: post.date,
+          excerpt: post.excerpt
+        };
+        res.json(post);
       }).catch(err => {
         console.log(err);
         res.status(500).send('Failed to create post');
@@ -127,9 +125,7 @@ function router(api, hexo) {
     fs.unlinkSync(hexo.source_dir + post.source);
 
     hexo.source.process().then(() => {
-      process.nextTick(() => {
-        res.status(200).send('Post deleted');
-      });
+      res.status(200).send('Post deleted');
     }).catch(err => {
       console.log(err);
       res.status(500).send('Failed to delete post');
@@ -200,10 +196,8 @@ function router(api, hexo) {
         return;
       }
       hexo.source.process(req.file.filename).then(() => {
-        process.nextTick(() => {
-          res.json({
-            filename: hexo.config.url + '/' + req.file.filename
-          });
+        res.json({
+          filename: hexo.config.url + '/' + req.file.filename
         });
       }).catch(() => {
         res.status(400).json({
