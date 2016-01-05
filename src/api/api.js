@@ -89,9 +89,8 @@ function router(api, hexo) {
     hexo.post.create(post).then(data => {
       let source = data.path.slice(hexo.source_dir.length);
       hexo.source.process(source).then(() => {
-        if (require('os').platform() == 'win32') source = source.replace('\\', '/');
         let post = Post.findOne({
-          source: source
+          slug: req.body.slug
         });
         post = {
           id: post._id,
