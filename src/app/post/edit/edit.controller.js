@@ -72,7 +72,7 @@ class PostEditCtrl {
     this.$translate(['DELETE_POST', 'CONFIRM_DELETE_POST', 'DELETE', 'CANCEL', 'SUCCESS_POST_DELETE']).then(translations => {
       let confirm = this.$mdDialog.confirm()
         .title(translations.DELETE_POST)
-        .content(translations.CONFIRM_DELETE_POST)
+        .textContent(translations.CONFIRM_DELETE_POST)
         .ariaLabel('Delete post')
         .ok(translations.DELETE)
         .cancel(translations.CANCEL)

@@ -14,6 +14,10 @@ md-content {
   overflow-x: hidden;
 }
 
+md-input-container {
+  margin-bottom: 4px;
+}
+
 md-input-container[md-float-bottom] {
   padding-bottom: 8px;
   label {

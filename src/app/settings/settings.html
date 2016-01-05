@@ -1,4 +1,4 @@
-<md-content layout="column" layout-gt-sm="row" flex id="settings-content">
+<md-content layout="column" layout-gt-xs="row" flex id="settings-content">
   <md-content layout="column" flex>
     <md-subheader class="md-primary">{{'THEME_CONFIG' | translate}}</md-subheader>
     <md-content layout="column" flex>
@@ -6,7 +6,7 @@
       </div>
     </md-content>
   </md-content>
-  <md-content layout="column" flex hide-sm>
+  <md-content layout="column" flex>
     <md-subheader class="md-primary">{{'HEXO_CONFIG' | translate}}</md-subheader>
     <md-content layout="column" flex>
       <div flex ng-model="vm.config.hexoConfig" ui-codemirror ui-refresh="vm.refresh" ui-codemirror-opts="{mode:'yaml', lineWrapping: true, readOnly: true}">

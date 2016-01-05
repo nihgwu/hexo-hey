@@ -6,19 +6,30 @@
         border-width: 0;
         font-size: 32px;
         line-height: 32px;
+        height: 32px;
+        margin-bottom: 18px;
+        padding: 0;
         @media only screen and (max-width: 600px) and (min-width: 0) and (orientation: portrait) {
           & {
             font-size: 24px;
           }
         }
       }
+      .md-errors-spacer {
+        display: none;
+      }
     }
   }
   .CodeMirror {
     height: calc(100vh - 160px);
-    @media only screen and (max-width: 600px) and (min-width: 0) and (orientation: portrait) {
+    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: portrait) {
       & {
-        height: calc(100vh - 148px);
+        height: calc(100vh - 144px);
+      }
+    }
+    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+      & {
+        height: calc(100vh - 128px);
       }
     }
   }

@@ -11,7 +11,7 @@ class Toast {
   show(content) {
     return this.$mdToast.show(
       this.$mdToast.simple()
-      .content(content)
+      .textContent(content)
       .hideDelay(2000)
     );
   }
