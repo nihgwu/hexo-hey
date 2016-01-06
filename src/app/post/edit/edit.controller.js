@@ -12,6 +12,7 @@ class PostEditCtrl {
     this.selectedItem = null;
     this.navId = 'settingsView';
     this.codemirrorLoaded = this.codemirrorLoaded.bind(this);
+    this.updating = false;
 
     $timeout(() => {
       this.refresh = true;
@@ -36,6 +37,9 @@ class PostEditCtrl {
   }
 
   update(publish) {
+    if (this.updating) {
+      return;
+    }
     if (!this.post.title) {
       this.$translate('INPUT_TITLE').then(INPUT_TITLE => {
         this.Toast.show(INPUT_TITLE);
@@ -43,6 +47,7 @@ class PostEditCtrl {
       this.closeSettings();
       return;
     }
+    this.updating = true;
     let post = Object.assign({}, this.post);
     if (angular.isUndefined(publish)) {
       post.layout = this.post.published ? 'post' : 'draft';
@@ -61,6 +66,8 @@ class PostEditCtrl {
       this.$translate('ERROR_POST_UPDATE').then(ERROR_POST_UPDATE => {
         this.Toast.show(ERROR_POST_UPDATE);
       });
+    }).finally(() => {
+      this.updating = false;
     });
   }
 
