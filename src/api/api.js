@@ -75,7 +75,10 @@ function router(api, hexo) {
       if (!post) {
         return res.status(404).send('Post not found');
       }
-      fs.unlinkSync(hexo.source_dir + post.source);
+      let stats = fs.statSync(post.full_source);
+      if (stats.isFile()) {
+        fs.unlinkSync(post.full_source);
+      }
     }
     let post = {
       title: req.body.title,
