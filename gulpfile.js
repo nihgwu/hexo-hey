@@ -26,7 +26,7 @@ var options = {
         main: ['lib/codemirror.js', 'lib/codemirror.css', 'addon/mode/overlay.js', 'mode/markdown/markdown.js', 'mode/gfm/gfm.js', 'mode/yaml/yaml.js']
       },
       'moment': {
-        main: ['moment.js', 'locale/zh-cn.js', 'locale/en-gb.js']
+        main: ['moment.js', 'locale/zh-cn.js', 'locale/en-gb.js', 'locale/ru.js']
       },
       'inline-attachment': {
         main: ['src/inline-attachment.js', 'src/codemirror.inline-attachment.js']
