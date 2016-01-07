@@ -126,7 +126,7 @@ function TranslateConfig($translateProvider) {
     'INPUT_SLUG': 'Укажите SEO URL',
     'INPUT_SLUG_EXIST': 'Такой SEO URL уже существует',
     'INPUT_DATE': 'Правильный формат даты yyyy-MM-dd( HH:mm:ss)',
-    'INPUT_SEARCH': 'Филтр по заголовку, категории или тэгу',
+    'INPUT_SEARCH': 'Фильтр по заголовку, категории или тэгу',
 
     'CONFIRM_DELETE_POST': 'Вы уверены, что хотите удалить запись?',
 
