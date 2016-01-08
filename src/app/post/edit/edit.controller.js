@@ -54,7 +54,7 @@ class PostEditCtrl {
     } else {
       post.layout = publish ? 'post' : 'draft';
     }
-    post.date = new Date(this.post.date);
+    post.date = new Date(this.post.date.replace(' ', 'T'));
     this.PostService.updatePost(post).then(data => {
       this.$translate('SUCCESS_POST_UPDATE').then(SUCCESS_POST_UPDATE => {
         this.Toast.show(SUCCESS_POST_UPDATE);
