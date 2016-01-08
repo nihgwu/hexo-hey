@@ -13,6 +13,9 @@ class HeaderCtrl {
     }, {
       key: 'zh-CN',
       value: '中'
+    }, {
+      key: 'ru',
+      value: 'RU'
     }];
   }
 

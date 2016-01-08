@@ -2,7 +2,7 @@
 
 /** @ngInject */
 function TranslateConfig($translateProvider) {
-  $translateProvider.translations('en', {
+  $translateProvider.translations('en-GB', {
     'USERNAME': 'Username',
     'PASSWORD': 'Password',
     'LOGIN': 'Login',
@@ -94,8 +94,54 @@ function TranslateConfig($translateProvider) {
     'ERROR_POST_DELETE': '删除文章失败'
   });
 
+  $translateProvider.translations('ru', {
+    'USERNAME': 'Логин',
+    'PASSWORD': 'Пароль',
+    'LOGIN': 'Войти',
+    'LOGOUT': 'Выйти',
+    'POSTS': 'Записи',
+    'SETTINGS': 'Настройки',
+    'NEW_POST': 'Добавить запись',
+    'THEME_CONFIG': 'Настройки темы',
+    'HEXO_CONFIG': 'Настройки Hexo',
+    'POST_SETTINGS': 'Параметры записи',
+    'SLUG': 'SEO URL',
+    'DATE': 'Дата',
+    'CATEGORY': 'Категория',
+    'TAG': 'Тэги',
+    'UPDATE': 'Обновить',
+    'PUBLISH': 'Публикация',
+    'UNPUBLISH': 'Скрыть',
+    'SAVE_DRAFT': 'Сохранить',
+    'CANCEL': 'Отмена',
+    'DELETE': 'Удалить',
+    'DELETE_POST': 'Удалить запись',
+
+    'PUBLISHED': 'Опубликована',
+    'DRAFT': 'Черновик',
+
+    'INPUT_USERNAME': 'Укажите логин',
+    'INPUT_PASSWORD': 'Введите пароль',
+    'INPUT_TITLE': 'Напишите заголовок',
+    'INPUT_SLUG': 'Укажите SEO URL',
+    'INPUT_SLUG_EXIST': 'Такой SEO URL уже существует',
+    'INPUT_DATE': 'Правильный формат даты yyyy-MM-dd( HH:mm:ss)',
+    'INPUT_SEARCH': 'Фильтр по заголовку, категории или тэгу',
+
+    'CONFIRM_DELETE_POST': 'Вы уверены, что хотите удалить запись?',
+
+    'SUCCESS_THEME_CONFIG_UPDATE': 'Настройки темы обновлены',
+    'SUCCESS_POST_DELETE': 'Запись удалена',
+    'SUCCESS_POST_UPDATE': 'Запись обновлена',
+
+    'ERROR_USER': 'Неверный логин или пароль',
+    'ERROR_THEME_CONFIG_UPDATE': 'Ошибка обновления темы',
+    'ERROR_POST_UPDATE': 'Возникла ошибка при обновлении записи',
+    'ERROR_POST_DELETE': 'Возникла ошибка при удалении записи'
+  });
+
   $translateProvider.useSanitizeValueStrategy(null);
-  $translateProvider.fallbackLanguage('en');
+  $translateProvider.fallbackLanguage('en-GB');
   //$translateProvider.uniformLanguageTag('bcp47');
   //$translateProvider.determinePreferredLanguage();
 }
