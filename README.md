@@ -1,7 +1,7 @@
 # hexo-hey
 an admin plugin for hexo, support hexo v3.x  
 built with gulp + babel + webpack  
-using es6 + angular + materail + jwt
+using es6 + angular + material + jwt
 
 ## Demo
 [http://nihgwu.github.io/hexo-hey/](http://nihgwu.github.io/hexo-hey/)  
