@@ -1,3 +1,6 @@
+# Depreciated
+This project is depreciated, I don't use it anymore
+
 # hexo-hey
 an admin plugin for hexo, support hexo v3.x  
 built with gulp + babel + webpack  
